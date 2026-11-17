@@ -3,17 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Recibida Juani</title>
+<title>Recibida Juani y Tomi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Shrikhand&family=Gloock&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Abril+Fatface&family=Special+Elite&family=Bowlby+One&family=Shrikhand&family=Gloock&family=Rubik:wght@800&family=JetBrains+Mono:wght@400;600&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 :root{
-  --bg:#E3F4F3; --surface:#F6FCFC; --ink:#133B3D; --muted:#4F7476; --line:#C4E4E2;
-  --accent:#0B7F7D; --accent-ink:#ffffff; --accent-soft:#D2F0EE;
-  --g1:#2BB3B0; --g2:#8FDCD6; --g3:#0B7F7D; --g4:#BDEFE6;
+  --bg:#EDE5D6; --surface:#FBF8F1; --ink:#1C1A17; --muted:#6B6458; --line:#DCD2C1;
+  --accent:#1C1A17; --accent-ink:#ffffff; --accent-soft:#F1E7CF; --gold:#C9A23A; --gold-2:#E8C35A;
   --bad:#a3213b; --bad-soft:#f6d3da;
-  --f-display:"Gloock",Georgia,serif; --f-body:"Fredoka",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  --f-display:"Gloock",Georgia,serif; --f-body:"DM Sans",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -21,34 +20,35 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 [hidden]{display:none!important}
-body::before,body::after{content:"";position:fixed;inset:-12vh -12vw;z-index:-1;pointer-events:none;will-change:transform}
-body::before{background:
-  radial-gradient(55vw 45vh at 88% 14%,color-mix(in oklab,var(--g1) 28%,transparent),transparent 70%),
-  radial-gradient(50vw 45vh at 78% 92%,color-mix(in oklab,var(--g3) 22%,transparent),transparent 70%);
-  animation:bgDriftA 7s ease-in-out infinite alternate}
-body::after{background:
-  radial-gradient(45vw 55vh at 6% 55%,color-mix(in oklab,var(--g2) 34%,transparent),transparent 70%),
-  radial-gradient(35vw 35vh at 34% 8%,color-mix(in oklab,var(--g4) 30%,transparent),transparent 70%);
-  animation:bgDriftB 6s ease-in-out infinite alternate}
-@keyframes bgDriftA{from{transform:translate(0,0) scale(1)}to{transform:translate(-7vw,6vh) scale(1.08)}}
-@keyframes bgDriftB{from{transform:translate(0,0) scale(1.05)}to{transform:translate(8vw,-5vh) scale(.97)}}
 @keyframes inUp{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
-.blobs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-.blobs i{position:absolute;border-radius:50%;filter:blur(48px);opacity:.55;will-change:transform}
-.blobs i:nth-child(1){width:34vmax;height:34vmax;left:-8vmax;top:-6vmax;background:#8FDCD6;animation:b1 8s ease-in-out infinite alternate}
-.blobs i:nth-child(2){width:26vmax;height:26vmax;right:-6vmax;top:20vh;background:#2BB3B0;opacity:.38;animation:b2 6.5s ease-in-out infinite alternate}
-.blobs i:nth-child(3){width:30vmax;height:30vmax;left:30vw;bottom:-12vmax;background:#BDEFE6;animation:b3 7.5s ease-in-out infinite alternate}
-.blobs i:nth-child(4){width:18vmax;height:18vmax;left:12vw;top:45vh;background:#0B7F7D;opacity:.25;animation:b4 5.5s ease-in-out infinite alternate}
-.blobs i:nth-child(5){width:22vmax;height:22vmax;right:18vw;top:-8vmax;background:#B5E9E6;animation:b5 6s ease-in-out infinite alternate}
-.blobs i:nth-child(6){width:16vmax;height:16vmax;right:4vw;bottom:6vh;background:#9FD8F0;opacity:.35;animation:b6 5s ease-in-out infinite alternate}
-@keyframes b1{to{transform:translate(14vw,10vh) scale(1.15)}}
-@keyframes b2{to{transform:translate(-16vw,14vh) scale(.85)}}
-@keyframes b3{to{transform:translate(-12vw,-16vh) scale(1.2)}}
-@keyframes b4{to{transform:translate(20vw,-12vh) scale(1.3)}}
-@keyframes b5{to{transform:translate(-10vw,18vh) scale(1.1)}}
-@keyframes b6{to{transform:translate(-18vw,-10vh) scale(1.25)}}
-@media (prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
 
+
+/* Papel madera + estrellas doradas + garabatos */
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .27 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.deco{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.deco .st{position:absolute;width:var(--s,30px);height:var(--s,30px);transform:rotate(var(--r,0deg));filter:drop-shadow(0 1px 1px rgba(90,70,20,.25));animation:tw 3.2s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes tw{0%,100%{opacity:1;scale:1}50%{opacity:.6;scale:.86}}
+@media (prefers-reduced-motion:reduce){.deco .st{animation:none}}
+/* Título con letras recortadas */
+.ransom{display:flex;flex-wrap:wrap;gap:.06em;line-height:1;margin:0;font-weight:400}
+.ransom .w{display:flex;gap:.04em;margin-right:.28em}
+.ransom .w>span{display:inline-block;padding:.06em .12em .1em;box-shadow:1px 2px 0 rgba(0,0,0,.12);transform:rotate(var(--r));font-family:var(--ff);background:var(--bgc);color:var(--fg);clip-path:polygon(var(--c1) 0,100% var(--c2),calc(100% - var(--c3)) 100%,0 calc(100% - var(--c4)))}
+h1.ransom{font-size:clamp(2.6rem,9vw,4.6rem);color:var(--ink)}
+.datebar{display:flex;align-items:center;gap:14px;margin-top:18px;max-width:420px}
+.datebar .ln{flex:1;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);height:6px;opacity:.75}
+.datebar .day{font-family:"Rubik",var(--f-body);font-weight:800;font-size:2.6rem;line-height:1}
+.datebar .lbl{font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;font-weight:500}
+.month{font-size:.95rem;letter-spacing:.42em;text-transform:uppercase;font-weight:500;margin:16px 0 0}
+.hero{text-align:center;padding-top:clamp(28px,6vw,56px);padding-bottom:12px}
+.hero .ransom{justify-content:center}
+.ransom .br{flex-basis:100%;height:0}
+.hero .datebar{margin-left:auto;margin-right:auto}
+/* Tarjetas con cinta */
+.panel{position:relative;box-shadow:0 2px 0 rgba(0,0,0,.04),0 10px 24px -14px rgba(60,45,20,.35)}
+.panel::before{content:"";position:absolute;top:-11px;left:22px;width:84px;height:22px;background:color-mix(in oklab,var(--tape,#E8C35A) 75%,transparent);transform:rotate(-4deg);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.cols>.panel:nth-child(2)::before{left:auto;right:28px;transform:rotate(5deg);--tape:#8FB3E8}
+.count{background:var(--gold)!important;color:#1C1A17!important}
+.list li{border-left-color:var(--gold)!important;background:color-mix(in oklab,var(--gold) 7%,var(--surface))!important;border-color:color-mix(in oklab,var(--gold) 35%,var(--line))!important}
 h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.2}
 h1{font-size:clamp(2.4rem,8vw,3.6rem);line-height:1.02;color:var(--accent)}
 h2{font-size:1.3rem}
@@ -133,15 +133,12 @@ header>div:first-child{min-width:0}
 </style>
 </head>
 <body>
-<div class="blobs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="deco" aria-hidden="true"><svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3D77A"/><stop offset=".45" stop-color="#C9A23A"/><stop offset=".7" stop-color="#E9C761"/><stop offset="1" stop-color="#9C7A22"/></linearGradient><pattern id="glit" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="url(#gold)"/><circle cx="1" cy="1" r=".55" fill="#FFF4C8" opacity=".7"/></pattern><symbol id="gstar" viewBox="0 0 24 24"><path d="M12 1.8l2.8 6.5 7 .6-5.3 4.7 1.6 6.9L12 16.9l-6.1 3.6 1.6-6.9L2.2 8.9l7-.6z" fill="url(#glit)"/></symbol></defs></svg><svg class="st" style="left:3vw;top:6vh;--s:34px;--r:-12deg;--d:0s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:14vw;top:22vh;--s:22px;--r:18deg;--d:0.6s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:88vw;top:5vh;--s:36px;--r:8deg;--d:1.2s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:94vw;top:30vh;--s:24px;--r:-20deg;--d:0.3s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:6vw;top:48vh;--s:28px;--r:25deg;--d:1.8s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:91vw;top:58vh;--s:30px;--r:-6deg;--d:0.9s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:48vw;top:3vh;--s:20px;--r:30deg;--d:2.1s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:30vw;top:90vh;--s:26px;--r:-15deg;--d:0.4s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:70vw;top:93vh;--s:34px;--r:12deg;--d:1.5s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:97vw;top:84vh;--s:22px;--r:-28deg;--d:2.4s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:2vw;top:80vh;--s:30px;--r:6deg;--d:1.1s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:60vw;top:40vh;--s:16px;--r:-10deg;--d:2.7s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:40vw;top:60vh;--s:14px;--r:20deg;--d:0.2s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:78vw;top:18vh;--s:18px;--r:-22deg;--d:1.9s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:44.4vw;top:54.6vh;--s:20px;--r:16deg;--d:2.3s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:89.7vw;top:45.8vh;--s:26px;--r:11deg;--d:1.2s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:49.8vw;top:57.2vh;--s:26px;--r:-4deg;--d:3.0s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:18.7vw;top:50.1vh;--s:14px;--r:-13deg;--d:2.6s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:61.5vw;top:76.5vh;--s:22px;--r:26deg;--d:0.1s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:10.0vw;top:30.5vh;--s:18px;--r:-5deg;--d:3.0s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:9.7vw;top:78.1vh;--s:16px;--r:-28deg;--d:3.0s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:95.3vw;top:92.7vh;--s:20px;--r:-2deg;--d:0.8s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:63.8vw;top:59.9vh;--s:24px;--r:23deg;--d:0.9s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:16.1vw;top:3.4vh;--s:16px;--r:-26deg;--d:0.3s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:3.9vw;top:45.6vh;--s:20px;--r:-30deg;--d:1.8s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:43.3vw;top:81.2vh;--s:24px;--r:9deg;--d:1.4s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:50.8vw;top:62.2vh;--s:30px;--r:23deg;--d:1.7s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:49.0vw;top:64.3vh;--s:26px;--r:-19deg;--d:1.9s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:44.9vw;top:28.1vh;--s:22px;--r:28deg;--d:0.7s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:96.8vw;top:95.6vh;--s:20px;--r:16deg;--d:0.6s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:81.7vw;top:68.5vh;--s:34px;--r:-18deg;--d:2.1s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:74.6vw;top:39.6vh;--s:26px;--r:26deg;--d:1.4s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:82.3vw;top:38.3vh;--s:16px;--r:-4deg;--d:0.1s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:93.0vw;top:81.6vh;--s:16px;--r:-28deg;--d:1.5s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:1.1vw;top:21.7vh;--s:22px;--r:-15deg;--d:2.2s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:88.4vw;top:46.2vh;--s:26px;--r:-14deg;--d:1.3s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:95.1vw;top:39.4vh;--s:30px;--r:-12deg;--d:1.6s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:8.0vw;top:61.2vh;--s:16px;--r:-22deg;--d:0.7s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:75.7vw;top:27.4vh;--s:34px;--r:11deg;--d:2.6s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:9.4vw;top:33.3vh;--s:16px;--r:-13deg;--d:0.6s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:93.6vw;top:73.3vh;--s:20px;--r:17deg;--d:0.0s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:12.3vw;top:25.2vh;--s:22px;--r:-4deg;--d:1.3s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:10.7vw;top:7.6vh;--s:14px;--r:-28deg;--d:0.5s" viewBox="0 0 24 24"><use href="#gstar"/></svg><svg class="st" style="left:54.7vw;top:44.1vh;--s:24px;--r:3deg;--d:1.7s" viewBox="0 0 24 24"><use href="#gstar"/></svg></div>
 
 <!-- APP -->
 <div class="wrap" id="appView">
   <header class="hero">
-    <div class="htext">
-      <p class="eyebrow" style="margin:0 0 6px">Lista de invitados</p>
-      <h1>Recibida Juani</h1>
-    </div>
+    <h1 class="ransom" aria-label="Recibida Juani y Tomi"><span class="w" aria-hidden="true"><span style="--ff:'Shrikhand';--bgc:#F2D16B;--fg:#7A2E1E;--r:2.7deg;--c1:4%;--c2:7%;--c3:3%;--c4:7%">R</span><span style="--ff:'Special Elite';--bgc:#F6E7C1;--fg:#1C1A17;--r:0.1deg;--c1:3%;--c2:0%;--c3:0%;--c4:5%">e</span><span style="--ff:'Shrikhand';--bgc:#E86A4B;--fg:#FFF6EA;--r:-6.0deg;--c1:3%;--c2:3%;--c3:0%;--c4:6%">c</span><span style="--ff:'Gloock';--bgc:#E7D8F5;--fg:#4B2C9B;--r:-0.8deg;--c1:5%;--c2:8%;--c3:7%;--c4:1%">i</span><span style="--ff:'Abril Fatface';--bgc:#FFFFFF;--fg:#2E7D4F;--r:-4.8deg;--c1:1%;--c2:1%;--c3:0%;--c4:7%">b</span><span style="--ff:'Gloock';--bgc:#F2D16B;--fg:#7A2E1E;--r:3.2deg;--c1:6%;--c2:7%;--c3:2%;--c4:2%">i</span><span style="--ff:'Shrikhand';--bgc:#F4C6D4;--fg:#B23A6E;--r:5.1deg;--c1:3%;--c2:1%;--c3:3%;--c4:3%">d</span><span style="--ff:'Rubik';--bgc:#E86A4B;--fg:#FFF6EA;--r:-6.0deg;--c1:8%;--c2:7%;--c3:8%;--c4:6%">a</span></span><span class="br" aria-hidden="true"></span><span class="w" aria-hidden="true"><span style="--ff:'Bowlby One';--bgc:#B9D3F2;--fg:#1F3F8F;--r:5.9deg;--c1:8%;--c2:6%;--c3:4%;--c4:5%">J</span><span style="--ff:'Gloock';--bgc:#C9E7D0;--fg:#B03A2E;--r:-1.6deg;--c1:7%;--c2:6%;--c3:4%;--c4:0%">u</span><span style="--ff:'Special Elite';--bgc:#1C1A17;--fg:#F5EFE3;--r:3.1deg;--c1:7%;--c2:0%;--c3:7%;--c4:1%">a</span><span style="--ff:'Gloock';--bgc:#F6E7C1;--fg:#1C1A17;--r:3.5deg;--c1:3%;--c2:5%;--c3:8%;--c4:1%">n</span><span style="--ff:'Rubik';--bgc:#F2D16B;--fg:#7A2E1E;--r:-4.6deg;--c1:5%;--c2:5%;--c3:5%;--c4:4%">i</span></span><span class="w" aria-hidden="true"><span style="--ff:'Abril Fatface';--bgc:#B9D3F2;--fg:#1F3F8F;--r:-4.6deg;--c1:2%;--c2:6%;--c3:5%;--c4:2%">y</span></span><span class="w" aria-hidden="true"><span style="--ff:'Rubik';--bgc:#F4C6D4;--fg:#B23A6E;--r:0.3deg;--c1:3%;--c2:6%;--c3:2%;--c4:0%">T</span><span style="--ff:'Shrikhand';--bgc:#FFFFFF;--fg:#2E7D4F;--r:0.1deg;--c1:3%;--c2:3%;--c3:2%;--c4:8%">o</span><span style="--ff:'Shrikhand';--bgc:#1C1A17;--fg:#F5EFE3;--r:4.3deg;--c1:7%;--c2:0%;--c3:4%;--c4:0%">m</span><span style="--ff:'Rubik';--bgc:#6B1F2A;--fg:#F8E7D8;--r:-2.9deg;--c1:6%;--c2:3%;--c3:2%;--c4:6%">i</span></span></h1>
   </header>
 
   <div class="cols">
@@ -179,6 +176,8 @@ header>div:first-child{min-width:0}
 <script>
 (function(){
   // 👇 Pegá acá el link de la aplicación web de Apps Script (termina en /exec)
+  const SHEET = "Lista";   // hoja de la planilla para esta página
+  let scriptViejo = false, verificado = false;
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzIjSquBezSqgfBWZuSMFUmpfmHb5sD8pQBeLmE5g-7hEfbnToACSiPa55ZNIPuF9XD/exec";
 
   const $ = id => document.getElementById(id);
@@ -202,20 +201,24 @@ header>div:first-child{min-width:0}
 
   // ---------- data (Google Sheets) ----------
   const LIVE = /^https:\/\/script\.google\.com\//.test(SCRIPT_URL);
-  function loadLocal(){ try{ items = JSON.parse(localStorage.getItem("rmList")||"[]").map(i=>({...i,name:cleanName(i.name)})); }catch(e){ items=[]; } render(); }
-  function saveLocal(){ try{ localStorage.setItem("rmList", JSON.stringify(items)); }catch(e){} }
+  function loadLocal(){ try{ items = JSON.parse(localStorage.getItem("rjtList")||"[]").map(i=>({...i,name:cleanName(i.name)})); }catch(e){ items=[]; } render(); }
+  function saveLocal(){ try{ localStorage.setItem("rjtList", JSON.stringify(items)); }catch(e){} }
   let busy=false;
   async function api(payload){
+    if(payload && !verificado){ throw new Error(scriptViejo ? "script viejo" : "sin verificar"); }
     const r = payload
-      ? await fetch(SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)})
-      : await fetch(SCRIPT_URL+"?t="+Date.now());
-    const j = await r.json(); if(!j.ok) throw new Error(j.error||"error"); return j;
+      ? await fetch(SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({...payload,sheet:SHEET})})
+      : await fetch(SCRIPT_URL+"?sheet="+SHEET+"&t="+Date.now());
+    const j = await r.json(); if(!j.ok) throw new Error(j.error||"error");
+    if(j.sheet!==SHEET){ scriptViejo=true; verificado=false; throw new Error("script viejo"); }
+    verificado=true;
+    return j;
   }
   function setItems(list){ items=(list||[]).map(i=>({...i,name:cleanName(i.name)})).filter(i=>i.name).sort((a,b)=>a.ts-b.ts); render(); }
   async function refresh(){
     if(busy) return;
     try{ const j=await api(); if(!busy) setItems(j.items); $("syncStatus").textContent=(CERRADA?"Lista final":"Lista compartida · se actualiza sola cada 15 segundos."); }
-    catch(e){ $("syncStatus").textContent="No se pudo conectar con la lista. Revisá tu conexión; se reintenta sola."; }
+    catch(e){ $("syncStatus").textContent= scriptViejo ? "⚠ Falta actualizar el script de la planilla." : "No se pudo conectar con la lista. Revisá tu conexión; se reintenta sola."; }
   }
   function startData(){
     if(!LIVE){ useLocal=true; loadLocal(); $("syncStatus").textContent="⚠ Falta pegar el link de la planilla (SCRIPT_URL): por ahora la lista se guarda sólo en este navegador."; return; }
@@ -233,7 +236,7 @@ header>div:first-child{min-width:0}
     }
     busy=true;
     try{ const j=await api({action:"add",items:list}); setItems(j.items); return {n:j.added,dup:j.dup||[]}; }
-    catch(e){ toast("No se pudo anotar. Probá de nuevo."); return {n:0,dup:[]}; }
+    catch(e){ toast(scriptViejo ? "Todavía no se puede anotar: falta actualizar la planilla." : "No se pudo anotar. Probá de nuevo."); return {n:0,dup:[]}; }
     finally{ busy=false; }
   }
 
@@ -296,16 +299,16 @@ header>div:first-child{min-width:0}
     doc.addFileToVFS("DejaVuSans-Bold.ttf", PDF_FONT_B); doc.addFont("DejaVuSans-Bold.ttf","DV","bold");
     const W=210, H=297, M=16, GAP=10, BOTTOM=286;
     const colW=(W-2*M-GAP)/2;
-    const pink=[11,127,125], soft=[210,240,238], ink=[19,59,61], muted=[79,116,118], zebra=[240,250,249];
+    const pink=[28,26,23], soft=[237,229,214], ink=[28,26,23], muted=[107,100,88], zebra=[248,244,236], gold=[201,162,58];
     const list = items.map(i=>cleanName(i.name)).filter(Boolean)
       .sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base",ignorePunctuation:true}));
     const fecha = new Date().toLocaleDateString("es-AR",{day:"numeric",month:"long",year:"numeric"});
     let top;
     const header=(first)=>{
-      doc.setFillColor(...soft); doc.rect(0,0,W,first?24:14,"F");
+      doc.setFillColor(...soft); doc.rect(0,0,W,first?24:14,"F"); doc.setDrawColor(...gold); doc.setLineWidth(.9); doc.line(0,first?24:14,W,first?24:14);
       doc.setTextColor(...pink); doc.setFont("DV","bold");
-      if(first){ doc.setFontSize(22); doc.text("Recibida Juani",M,15.5); top=TOP1; }
-      else { doc.setFontSize(10); doc.text("Recibida Juani (cont.)",M,9.5); top=TOP2; }
+      if(first){ doc.setFontSize(22); doc.text("Recibida Juani y Tomi",M,15.5); top=TOP1; }
+      else { doc.setFontSize(10); doc.text("Recibida Juani y Tomi (cont.)",M,9.5); top=TOP2; }
     };
     // Tamaño adaptable: achica renglón y letra para que todo entre en 2 carillas
     const TOP1=33, TOP2=22;
@@ -352,7 +355,7 @@ header>div:first-child{min-width:0}
   $("pdfBtn").onclick = async ()=>{
     if(!window.jspdf){ toast("No se pudo cargar el generador de PDF."); return; }
     const doc = buildPdf();
-    try{ doc.save("Lista Recibida Juani.pdf"); }catch(e){ toast("No se pudo descargar el PDF."); }
+    try{ doc.save("Lista Recibida Juani y Tomi.pdf"); }catch(e){ toast("No se pudo descargar el PDF."); }
   };
   // arrancar al final, cuando ya está todo definido
   startData();
