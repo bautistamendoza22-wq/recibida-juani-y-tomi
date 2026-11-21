@@ -95,7 +95,9 @@ input[type=text],input[type=password]{width:100%;min-width:0;font:inherit;backgr
 .hero{gap:12px!important}
 .photo{width:clamp(170px,20vw,230px)!important}
 .panel{padding:16px}
-.panel.closed{border-color:color-mix(in oklab,var(--accent) 45%,var(--line));background:color-mix(in oklab,var(--accent) 8%,var(--surface))}
+.panel.closed h2{color:var(--ink)}
+.panel.closed .hint{color:var(--ink)}
+.panel.closed{border-color:color-mix(in oklab,var(--gold) 55%,var(--line));background:color-mix(in oklab,var(--gold) 14%,var(--surface))}
 .panel.closed h2{color:var(--accent)}
 @media (max-width:600px){.photo{width:min(190px,52vw)!important;margin-top:18px!important}.hero{gap:4px!important}}
 .bulk{border-top:1px solid var(--line);padding-top:10px}
@@ -143,21 +145,9 @@ header>div:first-child{min-width:0}
   </header>
 
   <div class="cols">
-    <section class="panel">
-      <h2>Anotar gente</h2>
-      <form class="addform" id="addForm">
-        <div class="field">
-          <label for="nameIn">Nombre y apellido</label>
-          <input type="text" id="nameIn" maxlength="80" placeholder="Ej.: Juana Pérez" required>
-        </div>
-        <p class="err" id="addErr" hidden></p>
-        <button class="btn primary" type="submit" id="addBtn">Anotar</button>
-      </form>
-      <details class="bulk"><summary>Anotar varios a la vez</summary><div>
-      <p class="hint">Uno por renglón o separados por coma.</p>
-      <textarea id="bulkIn" rows="3" style="width:100%;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;resize:vertical" placeholder="Juana Pérez&#10;Lucas Gómez"></textarea>
-      <button class="btn" type="button" id="bulkBtn">Anotar todos</button>
-      </div></details>
+    <section class="panel closed">
+      <h2>Lista cerrada</h2>
+      <p class="hint">Ya no se puede anotar más gente. ¡Gracias a todos los que se sumaron!</p>
       <p class="status" id="syncStatus">Conectando…</p>
     </section>
 
@@ -193,7 +183,7 @@ header>div:first-child{min-width:0}
       return w.replace(/(^|[-'’])(\p{L})/gu,(m,p,c)=>p+c.toLocaleUpperCase("es"));
     }).join(" ");
   }
-  const CERRADA = false;
+  const CERRADA = true;
   let useLocal = false, readOnly = CERRADA, started = false;
 
   // ---------- toast ----------
@@ -242,25 +232,6 @@ header>div:first-child{min-width:0}
   }
 
 
-  $("addForm").addEventListener("submit", async e=>{
-    e.preventDefault();
-    const name=$("nameIn").value, note="";
-    if(!norm(name)) return;
-    $("addBtn").disabled=true; $("addBtn").textContent="Anotando…";
-    const r = await addNames([{name,note}]);
-    $("addBtn").disabled=false; $("addBtn").textContent="Anotar";
-    if(r.dup.length){ $("addErr").textContent=`${r.dup[0]} ya está en la lista.`; $("addErr").hidden=false; }
-    else if(r.n){ $("addErr").hidden=true; $("nameIn").value=""; toast("¡Anotado!"); }
-    $("nameIn").focus();
-  });
-  $("bulkBtn").onclick = async ()=>{
-    const names = $("bulkIn").value.split(/[\n,;]+/).map(s=>s.trim()).filter(Boolean);
-    if(!names.length) return;
-    $("bulkBtn").disabled=true; $("bulkBtn").textContent="Anotando…";
-    const r = await addNames(names.map(name=>({name})));
-    $("bulkBtn").disabled=false; $("bulkBtn").textContent="Anotar todos";
-    if(r.n||r.dup.length){ $("bulkIn").value=""; toast(`${r.n} anotado${r.n===1?"":"s"}`+(r.dup.length?` · ${r.dup.length} ya estaba${r.dup.length===1?"":"n"}`:"")); }
-  };
 
   // ---------- delete ----------
   let pending=null, pendT;
